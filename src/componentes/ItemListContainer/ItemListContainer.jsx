@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./nombre.css";
-import { pedirSushi } from "../../helpers/pedirProductos";
+// import { pedirSushi } from "../../helpers/pedirProductos";
+import { getFirestore } from "../../Firebase/config";
 import { ItemList } from "../ItemList/ItemList";
 import { FaSpinner } from "react-icons/fa";
 import { useParams } from "react-router-dom";
@@ -13,21 +14,45 @@ export const ItemListContainer = (props) => {
     // const param = useParams()
 
     const{categoriaId} = useParams()
-
-
+    
+    
     useEffect(() => {
+        
         setLoading(true)
-        pedirSushi()
-        .then((res)=>{
-            if(categoriaId){
-            setItems(res.filter(sushi => sushi.categoria === categoriaId))
-            console.log(res)}
-            else{
-                setItems(res)
-            }
-        })
-        .catch(()=>console.log("error"))
-        .finally(()=> setLoading(false))
+        
+        const db = getFirestore();
+
+        const Stock = db.collection('Stock')
+
+        if(categoriaId){
+            const filtrado = Stock.where("categoria", "==", categoriaId)
+            filtrado.get()
+            .then((res)=>{
+                const newItem = res.docs.map((doc)=>{
+                    return{id: doc.id, ...doc.data()}
+                })
+                setItems(newItem)
+            })
+            .catch((error) => console.log(error))
+            .finally(()=>{
+                setLoading(false)
+            })
+        } else{
+
+            Stock.get()
+            .then((res)=>{
+                const newItem = res.docs.map((doc)=>{
+                    return {id: doc.id, ...doc.data()}
+                })
+                setItems(newItem)
+                console.table(newItem)
+            }) 
+            .catch((error) => console.log(error))
+            
+            .finally(()=>{
+                setLoading(false)
+            })
+        }
     }, [categoriaId])
 
     return (

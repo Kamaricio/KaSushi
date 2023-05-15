@@ -6,6 +6,7 @@ export const Stock = [
         decripcion: "Lorem Ipsum",
         image: "https://picsum.photos/seed/picsum/200/300",
         categoria: "tradicional",
+        stock: 20,
 
     },
     {
@@ -15,6 +16,7 @@ export const Stock = [
         decripcion: "Lorem Ipsum",
         image: "https://picsum.photos/seed/picsum/200/300",
         categoria: "tradicional",
+        stock: 20,
 
     },
     {
@@ -24,6 +26,7 @@ export const Stock = [
         decripcion: "Lorem Ipsum",
         image: "https://picsum.photos/seed/picsum/200/300",
         categoria: "frutal",
+        stock: 20,
 
     },
     {
@@ -33,6 +36,7 @@ export const Stock = [
         decripcion: "Lorem Ipsum",
         image: "https://picsum.photos/seed/picsum/200/300",
         categoria: "frutal",
+        stock: 20,
 
     },
     {
@@ -42,6 +46,7 @@ export const Stock = [
         decripcion: "Lorem Ipsum",
         image: "https://picsum.photos/seed/picsum/200/300",
         categoria: "picante",
+        stock: 20,
 
     },
     {
@@ -51,6 +56,7 @@ export const Stock = [
         decripcion: "Lorem Ipsum",
         image: "https://picsum.photos/seed/picsum/200/300",
         categoria: "picante",
+        stock: 20,
 
     }
 ];

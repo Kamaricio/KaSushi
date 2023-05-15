@@ -1,0 +1,20 @@
+.listado{
+    display: flex;
+    justify-content: space-around;
+}
+.listado p span {
+    font-weight: bold;
+    color: rgb(181, 236, 52);
+}
+.Container h3{
+    text-align: center;
+    margin: 20px;
+}
+.Center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+}

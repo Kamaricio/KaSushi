@@ -1,8 +1,38 @@
-import React from 'react';
-import { Card, Col, Row, Button } from "react-bootstrap"
+import React, { useContext, useState } from 'react';
+import { Card, Col, Row, Button } from "react-bootstrap";
 import { ItemCounter } from '../ItemCounter/ItemCounter';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../Context/CartContext';
+import { Link } from 'react-router-dom';
 
-export const ItemDetail = ({ id, nombre, precio, image, decripcion, categoria }) => {
+export const ItemDetail = ({ id, nombre, precio, image, decripcion, categoria, stock }) => {
+    
+    const navigate = useNavigate()
+
+    const volver = ()=>{
+        navigate(-1)
+    }
+
+    const { AgregarCarrito } = useContext(CartContext)
+
+    const [counter, setCounter] = useState(1)
+
+
+    const sumarCarrito =()=>{
+      const itemNuevo ={
+        id,
+        nombre,
+        precio,
+        image,
+        decripcion,
+        categoria,
+        counter
+
+      }  
+      console.log(itemNuevo)
+      AgregarCarrito(itemNuevo)
+    }
+
     return (
         
 
@@ -16,8 +46,10 @@ export const ItemDetail = ({ id, nombre, precio, image, decripcion, categoria })
                                 <Card.Text>{precio}</Card.Text>
                                 <Card.Text>  {categoria}</Card.Text>
                                 <Card.Text>{decripcion}</Card.Text>
-                                <ItemCounter/>
-                                <Button variant="dark">Agregar al carrito</Button>
+                                <ItemCounter max={stock} modify={setCounter} cantidad={counter}/>
+                                <Button onClick={volver} variant="green">Volver</Button>
+                                <Button variant="dark" onClick={sumarCarrito}>Agregar al carrito</Button>
+                                <Link to="/carrito" className='btn btn-info'>Ir al carrito</Link>
                             </Card.Body>
                         </Card>
                     </Col>

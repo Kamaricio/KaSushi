@@ -1,28 +1,25 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import "./ItemCounter.css"
-export const ItemCounter = () => {
+export const ItemCounter = ({max, modify, cantidad}) => {
 
-    const [counter, SetCounter] = useState(1)
+    // const [counter, SetCounter] = useState(1)
     const restar = () => {
-        if (counter > 0){
-            SetCounter( counter-1 )
-        } else {
-            SetCounter(0)
+        if (cantidad > 0){
+            modify( cantidad - 1 )
         }
     }
     const sumar = () => {
-        SetCounter( counter+1 )
+        if(cantidad < max){
+        modify( cantidad + 1 )
     }
-    const reset = () => {
-        SetCounter(0)
     }
   return (
     <>
        <div className='boton'> 
-       <p>Cantidad: {counter}</p>
+       <p>Cantidad: {cantidad}</p>
         <button onClick={sumar}>+🍙</button>
         <button onClick={restar}>-🍘</button>
-        <button onClick={reset}>🍽</button>
+        {/* <button onClick={reset}>🍽</button> */}
 
        </div>
     </>

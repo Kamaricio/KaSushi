@@ -11,7 +11,7 @@ export const NavBar = () => {
         <Link className="ligaMenu" to="/productos/frutal">Sushi Frutal</Link>
         <Link className="ligaMenu" to="/productos/picante">Sushi Picante</Link>
         
-        <Link className="carrito" href="/Cart"><CartWidget/></Link>
+        <Link className="carrito" to="/carrito"><CartWidget/></Link>
     </div>
 
     );

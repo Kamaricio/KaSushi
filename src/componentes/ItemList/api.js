@@ -10,6 +10,6 @@ export function fetchData (){
             })
             .then(data => resolve(data))
             .catch(error => reject(error))
-        }),2000
+        }),1000
     })
 }
