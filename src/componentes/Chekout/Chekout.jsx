@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 import { getFirestore } from '../../Firebase/config'
 import Swal from 'sweetalert2'
+import { ItemCounter } from '../ItemCounter/ItemCounter'
 
 export const Chekout = () => {
 
@@ -61,6 +62,18 @@ export const Chekout = () => {
             console.log("Compra finalizada")
         })
     })
+    carrito.forEach(item => {
+        const docRef =db.collection('Stock').doc(item.id)
+
+        docRef.get()
+        .then((doc)=>{
+            docRef.update({
+                stock: doc.data().stock - Item.Counter
+
+
+            })
+        })
+    });
     }
     return (
         <div>

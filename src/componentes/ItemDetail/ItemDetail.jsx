@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../Context/CartContext';
 import { Link } from 'react-router-dom';
 
-export const ItemDetail = ({ id, nombre, precio, image, decripcion, categoria, stock }) => {
+export const ItemDetail = ({ id,identidad, nombre, precio, image, decripcion, categoria, stock }) => {
     
     const navigate = useNavigate()
 
@@ -21,6 +21,7 @@ export const ItemDetail = ({ id, nombre, precio, image, decripcion, categoria, s
     const sumarCarrito =()=>{
       const itemNuevo ={
         id,
+        identidad,
         nombre,
         precio,
         image,
