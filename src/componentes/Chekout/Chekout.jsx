@@ -5,7 +5,7 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 import { getFirestore } from '../../Firebase/config'
 import Swal from 'sweetalert2'
-import { ItemCounter } from '../ItemCounter/ItemCounter'
+// import { ItemCounter } from '../ItemCounter/ItemCounter'
 
 export const Chekout = () => {
 
@@ -68,7 +68,7 @@ export const Chekout = () => {
         docRef.get()
         .then((doc)=>{
             docRef.update({
-                stock: doc.data().stock - Item.Counter
+                stock: doc.data().stock - item.Counter
 
 
             })
